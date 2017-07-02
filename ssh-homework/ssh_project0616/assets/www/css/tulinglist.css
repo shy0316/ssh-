@@ -1,0 +1,189 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: ' Microsoft YaHei';
+}
+#space {
+    width: 100%;
+    top:0;
+    left:0;
+    z-index: -1;
+
+}
+.back{
+    position: absolute;
+    z-index: 9;
+    top: 25px;
+    left: 0;
+    margin: auto 25px;
+    width: 3em;
+    height: 3em;
+}
+h2{
+    position: absolute;
+    z-index: 9;
+    color: rgba(209, 255, 255, 1);
+    text-align: center;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.8);
+    top:50%;
+    left: 50%;
+    margin: -30px -100px;
+    border: 2px solid;
+    padding: 10px;
+    width: 200px;
+    font-size: 32px;
+    -webkit-font-smoothing: antialiased;/*让字体变得清晰*/
+}
+
+.tulingbg{
+    z-index: 9;
+    background-color: rgba(255,255,255,.3);
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100px;
+}
+#footer{
+    z-index: 9;
+    background-color: rgba(255,255,255,.3);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+
+}
+
+#footer span img{
+
+    text-align: center;
+    position: absolute;
+    top:50%;
+    margin-top: -20px;
+}
+.home img{
+
+    width:35px;
+    height: 35px;
+    left: 0%;
+    margin: -17.5px 0 0 17.5px;
+
+}
+.setting img{
+    width:35px;
+    height: 35px;
+    right: 0%;
+    margin: -17.5px 17.5px 0 0;
+}
+.location img{
+    width:35px;
+    height: 35px;
+    left: 25%;
+    margin: -17.5px  0 0;
+}
+.chat img{
+    right: 25%;
+    width:40px;
+    height: 40px;
+    margin: -20px  0 0;
+}
+.add img{
+    width:45px;
+    height: 45px;
+    left: 50%;
+    margin: -22.5px;
+}
+
+
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#ten,#ele,#twl{
+    position: absolute;
+    z-index: 9;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.8);
+    margin:0 auto;
+    border: 2px solid;
+    border-radius: 50%;
+    padding: 10px;
+    width:70px;
+    height:70px;
+    line-height: 110px;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center 25%;
+    -webkit-font-smoothing: antialiased;/*让字体变得清晰*/
+
+}
+
+#one{
+    top: 120px;
+    left: 30px;
+    background-image: url("../img/chatting.png");
+}
+#two{
+    top: 120px;
+    left: 50%;
+    margin-left:-50px ;
+    background-image: url("../img/story.png");
+
+}
+#three{
+    top: 120px;
+    right:30px;
+    background-image: url("../img/smile.png");
+}
+#four{
+    top: 220px;
+    left: 30px;
+    background-image: url("../img/kuaidi.png");
+}
+#five {
+    top: 220px;
+    left: 50%;
+    margin-left:-50px ;
+
+    background-image: url("../img/air.png");
+}
+#six {
+    top: 220px;
+    right:30px;
+    background-image: url("../img/news.png");
+}
+
+#seven{
+    top: 320px;
+    left: 30px;
+    background-image: url("../img/train.png");
+}
+#eight{
+    top: 320px;
+    left: 50%;
+    margin-left:-50px ;
+    background-image: url("../img/yi.png");
+
+}
+#nine{
+    top: 320px;
+    right: 30px;
+    background-image: url("../img/chengyu.png");
+}
+#ten{
+    top: 420px;
+    left: 30px;
+    background-image: url("../img/eat.png");
+}
+#ele{
+    top: 420px;
+    left: 50%;
+    margin-left:-50px ;
+    background-image: url("../img/star.png");
+}
+#twl{
+    top: 420px;
+    right: 30px;
+    background-image: url("../img/baike.png");
+}
+
+

@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图灵接口页</title>
+<link href="../css/tulinglist.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="space"></canvas>
+<div class="tulingbg">
+<img class="back" src="../img/back1.png">
+<h2>图灵机器人</h2>
+</div>
+
+<div id="one">聊天室</div>
+<div id="two">故事</div>
+<div id="three">笑话</div>
+<div id="four">快递</div>
+<div id="five">天气查询</div>
+<div id="six">新闻</div>
+<div id="seven">列车</div>
+<div id="eight">英文翻译</div>
+<div id="nine">成语接龙</div>
+<div id="ten">食谱</div>
+<div id="ele">星座</div>
+<div id="twl">生活百科</div>
+<div id="footer">
+    <span class="home"><img  src="../img/home.png"></span>
+    <span class="location"><img src="../img/location.png"></span>
+    <span class="add"><img  src="../img/add.png"></span>
+    <span class="chat"><img src="../img/chat.png"></span>
+    <span class="setting"><img src="../img/setting.png"></span>
+</div>
+</body>
+</html>
+<script src="../js/jquery-3.1.1.js"></script>
+<script>
+    
+
+    //requestAnimFrame通知浏览器重采样动画 类似setTimeout和setInterval,但比他们刚流畅，不需要传入时间参数
+    window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})();
+    var canvas = document.getElementById("space");
+    var c = canvas.getContext("2d");
+
+    var numStars = 1900; /*星星个数*/
+    var radius = '0.'+Math.floor(Math.random() * 9) + 1  ;
+    var focalLength = canvas.width *2;
+    var warp = 0;
+    var centerX, centerY;
+
+    var stars = [], star;
+    var i;
+    var animate = true;
+    initializeStars();
+    function executeFrame(){
+        if(animate)
+            requestAnimFrame(executeFrame);
+        moveStars();
+        drawStars();
+    }
+
+    function initializeStars(){
+        /*画布中心出发点*/
+        centerX = canvas.width / 2;
+        centerY = canvas.height / 2;
+
+        stars = [];
+        for(i = 0; i < numStars; i++){
+            star = {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                z: Math.random() * canvas.width,
+                o: '0.'+Math.floor(Math.random() * 99) + 1
+            };
+            stars.push(star);
+        }
+    }
+    /*星星移动*/
+    function moveStars(){
+        for(i = 0; i < numStars; i++){
+            star = stars[i];
+            star.z--;
+
+            if(star.z <= 0){
+                star.z = canvas.width;
+            }
+        }
+    }
+
+    function drawStars(){
+        var pixelX, pixelY, pixelRadius;
+        // Resize to the screen
+        if(canvas.width != window.innerWidth || canvas.width != window.innerWidth){
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initializeStars();
+        }
+        if(warp==0)
+        {c.fillStyle = "rgba(0,10,20,1)";
+            c.fillRect(0,0, canvas.width, canvas.height);}
+        c.fillStyle = "rgba(209, 255, 255, "+radius+")";
+        for(i = 0; i < numStars; i++){
+            star = stars[i];
+
+            pixelX = (star.x - centerX) * (focalLength / star.z);
+            pixelX += centerX;
+            pixelY = (star.y - centerY) * (focalLength / star.z);
+            pixelY += centerY;
+            pixelRadius = 1 * (focalLength / star.z);
+
+            c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+            c.fillStyle = "rgba(209, 255, 255, "+star.o+")";
+        }
+    }
+    executeFrame();
+    $(".back").click(function () {
+
+        window.history.back(-1);
+    })
+    $(".home").click(function () {
+        window.location.href="index.html";
+    })
+    $("#one").click(function () {
+        window.location.href="tuling-chatting.html";
+    })
+    $("#two").click(function () {
+        window.location.href="tuling-story.html";
+    })
+    $("#three").click(function () {
+        window.location.href="tuling-smile.html";
+    })
+    $("#four").click(function () {
+        window.location.href="tuling-deliver.html"
+    })
+    $("#five").click(function () {
+        window.location.href="tuling-airquery.html"
+    })
+    $("#six").click(function () {
+        window.location.href="tuling-newslist.html"
+    })
+    $("#seven").click(function () {
+        window.location.href="tuling-train.html";
+    })
+    $("#eight").click(function () {
+        window.location.href="tuling-ctoe.html";
+    })
+    $("#nine").click(function () {
+        window.location.href="tuling-chengyu.html";
+    })
+    $("#ten").click(function () {
+        window.location.href="tuling-cookbook.html"
+    })
+    $("#ele").click(function () {
+        window.location.href="tuling-star.html"
+    })
+    $("#twl").click(function () {
+        window.location.href="tuling-query.html"
+    })
+</script>

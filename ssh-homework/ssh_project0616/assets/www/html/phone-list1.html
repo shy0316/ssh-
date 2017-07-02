@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <link href="../css/phone.css" type="text/css" rel="stylesheet">
+    <title>通讯录</title>
+
+
+</head>
+<body>
+<div id="header" >
+    <span class="back"><a href="" ><img src="../img/back2.png"></a></span>
+    <h3>通讯录</h3>
+
+</div>
+<div  id="content">
+    <span class="mine">本机号码：+<span class="minenumber"></span></span>
+    <div id="phonecontent">
+    </div>
+
+
+</div>
+<div id="footer">
+    <span class="home"><img  src="../img/home.png"></span>
+    <span class="location"><img src="../img/location.png"></span>
+    <span class="add"><img  src="../img/add.png"></span>
+    <span class="chat"><img src="../img/chat1.png"></span>
+    <span class="setting"><img src="../img/setting.png"></span>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+    	$(".back").click(function () {
+			window.history.back(-1);
+        })
+		$(".home").click(function () {
+			window.location.href="index.html";
+        })
+        $.ajax({
+            type:'post',
+            url:"../xml/phonelist.xml",
+            dataType:'xml',
+            success:function (data) {
+               /* alert(data);*/
+                var minenum=$(data).find("mine").children("phonenumber").text();
+
+                $(".minenumber").html(minenum);
+                var datas="<ul>";
+                $(data).find("stu").each(function () {
+                    var name = $(this).children("name").text();
+                    var num = $(this).children("phonenumber").text();
+                    var imgpath = $(this).children("facepath").text();
+
+                    datas += "<a href='phone-list-details.html?name="+name+"&phonenum="+num+"&imgpath="+imgpath+"'> <li>"+name+"</li></a>";
+                })
+                datas+="</ul>";
+                $("#phonecontent").html(datas);
+            }
+
+        });
+    })
+</script>
+

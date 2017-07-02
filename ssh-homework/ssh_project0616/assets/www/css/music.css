@@ -1,0 +1,232 @@
+body{
+    margin: 0;
+    padding:0 ;
+    width:100%;
+    height:100%;
+}
+#header{
+    position: fixed;
+    top:0;
+    background-color: #000;
+    height: 80px;
+    width:100%;
+    color: #cfdbdf;
+}
+h3{
+    text-align: center;
+}
+
+.back img{
+    width: 25px;
+    height: 35px;
+    position: absolute;
+    top:50%;
+    left: 10px;
+    margin-top:-17.5px ;
+}
+.songname{
+    text-align: center;
+    margin-top: 18px;
+    font-size: 1.2rem;
+}
+.singername{
+    text-align: center;
+    position: relative;
+}
+.singername:before{
+    content: "";
+    width:30px;
+    height: 1px;
+    color: #f1f1f1;
+    background: #fff;
+    position: absolute;
+    top:12px;
+    margin-left: -38px;
+}
+.singername:after{
+    content: "";
+    width:30px;
+    height: 1px;
+    color: #f1f1f1;
+    background: #fff;
+    position: absolute;
+    top:12px;
+    margin-left: 6px; /*涓庡師鍐呭璺濈閫氳繃杩欎釜鎺у埗*/
+
+}
+
+#content{
+    width: 100%;
+    background-color: #982e4b;
+    position: absolute;
+    top:80px;
+    bottom: 0;
+}
+.songimg img{
+    display: block;
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    top:40px;
+    border:5px solid rgba(0,0,0,.3);
+    -webkit-animation: run 10s linear infinite;
+    animation:run 10s linear infinite;
+}
+@keyframes run{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.stop{
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+}
+.run{
+    -webkit-animation-play-state: running;
+    -moz-animation-play-state: running;
+    animation-play-state: running;
+}
+
+/*杩涘害鏉″紑濮�*/
+.play-progress-rate{
+    width:100%;
+   /* border: 1px solid #1f6377;*/
+    position: relative;
+    top:80px;
+    height: 10px;
+}
+/*杩涘害鑳屾櫙鏉�*/
+.progress-rate-bg{
+    position: relative;
+    display:block;
+    text-align: center;
+    margin: auto;
+   /* width: 260px;*/
+    width: 72.1%;
+    height: 10px;
+    border: 1px solid #fff;
+    padding: 0px;
+    border-radius: 30px;
+}
+.progress-rate-color{
+   /* background-image: linear-gradient(60deg, rgba(255,255,255,.2) 5%, transparent 5%, transparent 10%, rgba(255,255,255,.2) 10%, rgba(255,255,255,.2) 15%,  transparent 20%,transparent);
+    */
+    /*background-image: repeating-linear-gradient(135deg, #982e4b, #982e4b .25em, #ffffff 0, #ffffff .75em);
+*/
+    /*transparent閫忔槑 鍙栫埗鍏冪礌棰滆壊*/
+    background-image: repeating-linear-gradient(135deg, transparent, transparent .25em, #ffffff 0, #ffffff .75em);
+    height: 10px;
+    border-radius: 30px;
+    transition: width .8s ease;
+    -webkit-transition: width .8s ease;/*婊戝姩杩囨浮鏁堟灉*/
+    -moz-transition: width .8s ease;
+    -o-transition: width .8s ease;
+    position: relative;
+
+}
+.progress-rate-color:after{
+    content: "";
+    width:20px;
+    height:22px;
+    border-radius: 50%;
+   /* background-color: #d3b4df;
+    color: #1f6377;*/
+    position: absolute;/*璇ラ拡瀵瑰厓绱犱负position锛歳elative*/
+    right:-12px;
+    top:-5px;
+    background: url("../img/V5i67V2.png");
+
+}
+.play-time{
+    position: absolute;
+    left:5px;
+    top:-5px;
+    font-size: .8rem;
+
+}
+.surplus-time{
+    display: block;
+    float: right;
+    position: relative;
+    right:5px;
+    top:-15px;
+    font-size: .8rem;
+}
+
+.operator{
+    width: 100%;
+    position: relative;
+    top:110px;
+    display: block;
+}
+.btns{
+    display: block;
+   /* margin: auto;*/
+    text-align: center;
+    margin-left: -20px;
+
+}
+.operator img{
+    width:2.8rem;
+    height: 2.8rem;
+}
+.hidden{
+    display: none;
+}
+#prev{
+    position: absolute;
+    left:15%;
+}
+#next{
+    position: absolute;
+    right:15%;
+}
+#play,#pause{
+    width:3.6rem;
+    height:3.6rem;
+    position: absolute;
+    left: 50%;
+    margin:0 -1.8rem;
+    top:-.3rem;
+}
+#footer{
+    background-color: #000;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+#footer span{
+    display:block;
+    position:absolute ;
+}
+#footer span img{
+    width:42px;
+    height: 42px;
+    margin-top: 10px;
+    top:50%;
+}
+.setting{
+    right: 4%;
+}
+.chat{
+    right: 24%;
+}
+.add{
+    right: 44%;
+}
+.home{
+    left:4%;
+}
+.location{
+    left:23%;
+}

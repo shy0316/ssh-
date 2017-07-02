@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>rss</title>
+    <!-- 引入 jQuery Mobile 样式 -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- 引入 jQuery 库 -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- 引入 jQuery Mobile 库 -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript">
+        function forward(topage) {
+            //跳转页面
+            $.mobile.changePage(topage,{"transition":"flip"});
+        }
+
+
+        $(document).on("pageinit","#pageone",page_init);
+        function page_init(){
+
+            //请求百度提供的新闻信息
+            $.post("http://news.baidu.com/n?cmd=1&class=civilnews&tn=rss",{},function(data){
+                alert(data);
+                //解析xml文件
+                $(data).find("item").each(function(){
+                    var title = $(this).children("title").text();
+                    var link = $(this).children("link").text();
+                    $("#newlists").append("<li><a href='"+link+"'>"+title+"</li>")
+                });
+                $("#newlists").listview("refresh");
+
+            },'xml')
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+<div data-role="page" id="pageone">
+
+    <div data-role="header"  data-position="fixed"  data-theme='b'>
+        <a href="#" data-rel="back" target="_blank" data-role="button" data-icon="back">返回</a>
+        <h1>RSS新闻</h1>
+    </div>
+
+    <div data-role="content"  id="contentmain">
+        <ul data-role="listview" id="newlists" data-inset="true" data-divider-theme="b">
+
+        </ul>
+    </div>
+
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+        <div data-role="navbar" data-iconpos="bottom">
+            <ul>
+                <!-- 导航按钮开始 -->
+                <li><a href="#" class="ui-btn-active back ui-state-persist"
+                       data-theme="" data-icon="home" data-transition="None">首页</a>
+                </li>
+                <li><a href="#" data-icon="star" class="tuling">图灵库</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $(".back").click(function () {
+
+        location.href="index.html"
+    });
+    $(".tuling").click(function () {
+        location.href="tuling-list1.html";
+    })
+</script>
+</body>
+</html>

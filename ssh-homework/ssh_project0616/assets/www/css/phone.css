@@ -1,0 +1,154 @@
+body{
+    margin: 0;
+    padding:0 ;
+    width:100%;
+    height:100%;
+    
+}
+#header{
+    position: fixed;
+    top:0px;
+    background-color: #000;
+    height: 60px;
+    width:100%;
+    color: #cfdbdf;
+}
+h3{
+    text-align: center;
+}
+
+.back img{
+    width: 25px;
+    height: 35px;
+    position: absolute;
+    top:50%;
+    left: 10px;
+    margin-top:-17.5px ;
+}
+#content{
+    position: absolute;
+    top:60px;
+    width: 100%;
+    padding: 0;
+    bottom: 60px;
+    background-color: #ffffff;
+    margin: 0;
+    /*background-image: url("../img/1.jpg");
+    background-size: auto;
+    background-position: center center;
+    background-repeat: no-repeat;*/
+    /*filter: blur(2px);*/
+}
+.iconarea{
+    text-align: center;
+    height: auto;
+    background-color: #e1e1e1;
+    padding: 30px;
+}
+.iconarea span{
+    display: inline-block;
+    width:4rem;
+    height: 4rem;
+    background-color: #77291f;
+    border-radius: 50%;
+    line-height: 5em;
+    margin:.2em;
+    text-align: center;
+}
+i{
+    text-align: center;
+    color: #f1f1f1;
+}
+.phonenum{
+    height: 50px;
+    border-bottom: 2px solid #982e4b;
+    line-height: 50px;
+}
+.beizhu{
+    height: 80px;
+
+    line-height: 50px;
+}
+.phonenum label,.beizhu label{
+    margin-left: .4rem;
+    font-size: 1.5rem;
+}
+
+.num{
+    font-size: 1.3rem;
+    color: #1f6377;
+}
+
+.mine{
+    display: block;
+    border-bottom: 1px solid #808080;
+    background-color: #dbdbdb;
+    text-align: center;
+    padding: 10px 0;
+}
+#phonecontent ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    height: 40px;
+    border-bottom:2px solid #dbdbdb;
+    margin:20px 0;
+    padding-left: 20px;
+    background-image: url("../img/next2.png");
+    background-repeat: no-repeat;
+    background-size: 1.2rem 1.2rem;
+    background-position: 94% 20%;
+}
+#content img{
+    width:120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top:20px;
+    left: 50%;
+    margin-left: -60px;
+    z-index: 1;
+
+}
+#phonecontent h3{
+    text-align: center;
+    z-index: 999;
+    margin-top: 140px;
+    font-size: 2rem;
+}
+
+#footer{
+    background-color: #000;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+#footer span{
+    display:block;
+    position:absolute ;
+}
+#footer span img{
+    width:42px;
+    height: 42px;
+    margin-top: 10px;
+    top:50%;
+}
+.setting{
+    right: 4%;
+}
+.chat{
+    right: 24%;
+}
+.add{
+    right: 44%;
+}
+.home{
+    left:4%;
+}
+.location{
+    left:23%;
+}

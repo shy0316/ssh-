@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stus>
+	<mine>
+		<phonenumber>12345678910</phonenumber>
+	</mine>
+	<stu>
+		<name>shy</name>
+		<phonenumber>1391321089</phonenumber>
+		<facepath>fc.jpg</facepath>
+	</stu>
+	<stu>
+		<name>cl</name>
+		<phonenumber>1391321090</phonenumber>
+		<facepath>fc1.jpg</facepath>
+	</stu>
+	<stu>
+		<name>cpp</name>
+		<phonenumber>1391321091</phonenumber>
+		<facepath>fc2.jpg</facepath>
+
+	</stu>
+	<stu>
+		<name>ztc</name>
+		<phonenumber>1391321092</phonenumber>
+		<facepath>fc3.jpg</facepath>
+
+	</stu>
+	<stu>
+		<name>pyl</name>
+		<phonenumber>1391321093</phonenumber>
+		<facepath>fc4.jpg</facepath>
+		<!--<link>zxt.html</link>-->
+	</stu>
+</stus>

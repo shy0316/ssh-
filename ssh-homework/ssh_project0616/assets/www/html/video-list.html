@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>视频列表</title>
+    <link type="text/css" rel="stylesheet" href="../css/style1.css"/>
+    
+</head>
+<body>
+
+<div id="container">
+    <div id="header" class="border-bottom">
+        <span class="back"><a href="" ><img src="../img/back2.png"></a></span>
+         <div class="headtitle">视频列表</div>
+    </div>
+    <div id="content" style="position: relative;background-color: #fff;">
+        <div class="main" id="musiclist">
+           
+          
+       
+         
+
+           
+        </div>
+         <div class="page-divide">
+                <span>首页</span>
+                <span id="frontPage">上一页</span>
+                <span id="nextPage">下一页</span>
+                <span>尾页</span>
+            </div>
+
+    </div>
+    <div id="footer" class="position-bottom">
+        <span class="home"><img  src="../img/home.png"></span>
+        <span class="location"><img src="../img/location.png"></span>
+        <span class="add"><img  src="../img/add.png"></span>
+        <span class="chat"><img src="../img/chat.png"></span>
+        <span class="setting"><img src="../img/setting.png"></span>
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+    <script type="text/javascript">
+         $(function(){
+
+           $.ajax({
+                type:"get",
+                url:"http:// 192.168.43.111:8080/SSM_homework/getVideo.action",
+                data : {
+					"action" : "ajaxDatas"
+				},
+                dataType:"json",
+                beforeSend:function(){
+                    /* alert("正在请求服务器资源"); */
+                },
+                success:function(data){
+                    /*  alert(data);  */
+                     $.each(data,function(index,value){
+                         $("#musiclist").append("<div class='onesong'><a target='_top' href='video.html?vid="+value.id+"' alt='"+value.id+"'>" +
+                            "<div class='sname'>"+value.vName+"</div>" +
+                            "<img class='smallright' src='../img/smallright.png'></a></div>");
+                    })
+
+                },
+                error:function(){
+                    alert("请求服务器资源失败！");
+                }
+            });
+        });
+       //下一页
+			$("#nextPage").click(function(){
+				
+				$.ajax({
+					url : 'http://172.20.10.2:8080/SSM_homework/getVideo.action',
+					type : 'get',
+					data : {
+						"action" : "ajaxDatasNext"
+					},
+					dataType : 'json',
+					success : function(data) {
+						$("#musiclist").html("");
+						$.each(data,function(index,value){
+	                         $("#musiclist").append("<div class='onesong'><a target='_top' href='video.html?vid="+value.id+"' alt='"+value.id+"'>" +
+	                            "<div class='sname'>"+value.vName+"</div>" +
+	                            "<img class='smallright' src='../img/smallright.png'></a></div>");
+	                    })
+
+					},
+	                error:function(){
+	                    alert("请求服务器资源失败！");
+	                }
+					
+				});
+			});
+       
+			//上一页
+			$("#frontPage").click(function(){
+				$.ajax({
+					url : 'http://172.20.10.2:8080/SSM_homework/getVideo.action',
+					type : 'get',
+					data : {
+						"action" : "ajaxDatasFront"
+					},
+					dataType : 'json',
+					success : function(data) {
+						$("#musiclist").html("");
+						$.each(data,function(index,value){
+	                         $("#musiclist").append("<div class='onesong'><a target='_top' href='video.html?vid="+value.id+"' alt='"+value.id+"'>" +
+	                            "<div class='sname'>"+value.vName+"</div>" +
+	                            "<img class='smallright' src='../img/smallright.png'></a></div>");
+	                    })
+					},
+					error : function() {
+
+					}
+				});
+			});
+
+    </script>
+</div>
+</body>
+
+<script >
+$(".back").click(function () {
+    window.history.back(-1);
+})
+ $(".home").click(function () {
+	 location.href="index.html";
+})
+
+</script>
+</html>

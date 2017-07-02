@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <link href="../css/music.css" type="text/css" rel="stylesheet">
+    <title>视频</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <span class="back"><a href="" ><img src="../img/back2.png"></a></span>
+    <div class="songname"></div>
+    
+</div>
+<div id="content">
+     <div id="videoarea" style="margin:auto;">
+           
+            <video id="vd"  width="300px"  style="margin-left:30px" height="360px" controls="controls"></video>
+
+        </div>
+   
+</div>
+<div id="footer">
+        <span class="home"><img  src="../img/home.png"></span>
+        <span class="location"><img src="../img/location.png"></span>
+        <span class="add"><img  src="../img/add.png"></span>
+        <span class="chat"><img src="../img/chat1.png"></span>
+        <span class="setting"><img src="../img/setting.png"></span>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+    	//alert(1);
+         $(".back").click(function () {
+        window.history.back(-1);
+    	})
+	     $(".home").click(function () {
+	    	 location.href="index.html";
+	    })
+
+        //获取地址栏参数列表的listId值
+        var vid=GetQueryString("vid");
+        //alert(vid);
+         $.ajax({
+         type:"post",
+         url:"http://172.16.16.39:8080/SSM_homework/getVideo.action",
+         data:{"action":"getVideoById",
+        	 "vid":vid
+        	 },
+         dataType:"json",
+         beforeSend:function(){
+         	//alert("正在请求服务器资源");
+         },
+         success:function(data){
+        	 //alert(data);
+        	 $(".songname").html(data.vName);
+        	 MediaPlay.playaudio(data.vPath);
+         },
+         
+         error:function(){
+         	alert("请求服务器资源失败！");
+         }
+         
+      });
+         var MediaPlay={
+                 playaudio:function(data)
+                 {
+                	//alert("视频"+data);
+                    var  path="http://172.16.16.39:8080/SSM_homework/video/"+data;
+                   // alert(path);
+                	 
+   				  $("#vd").attr({"src":path});
+   				  $("#vd").play();
+   				  
+                 }
+             };
+    });
+        
+    //获取对应参数得值,同时解决中文乱码
+    function GetQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        //
+        // if(r!=null)return  unescape(r[2]if(r!=null)return  unescape(r[2]);
+        // return null;
+        //解析中文乱码
+        return r?unescape(r[2]):null;
+    }
+    
+   
+
+
+</script>

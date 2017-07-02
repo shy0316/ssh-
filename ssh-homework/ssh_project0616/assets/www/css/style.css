@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+    width:100%;
+    height: 100%;
+}
+#container{
+    display: -moz-box;
+    display: -webkit-box;
+    -moz-box-orient: vertical;
+    -webkit-box-orient: vertical;
+
+}
+.bg{
+    width:100%;
+    height: 600px;
+    background: url("../img/2.jpg") no-repeat center center fixed;
+    background-size:cover ;/*or 100%  or 100% 100%*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+}
+.blur{
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+
+}

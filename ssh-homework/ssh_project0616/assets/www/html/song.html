@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <link href="../css/music.css" type="text/css" rel="stylesheet">
+    <title>音乐单曲</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <span class="back"><a href="" ><img src="../img/back2.png"></a></span>
+    <div class="songname"></div>
+    <div class="singername"></div>
+</div>
+<div id="content">
+    <div class="songimg">
+        <img src="" class="play" id="control">
+    </div>
+    <!--时间+进度条-->
+    <div class="play-progress-rate">
+        <span id="playTime" class="play-time">00:00</span>
+        <div id="progressBg" class="progress-rate-bg">
+            <div id="progressColor" class="progress-rate-color"style="width:0px;"></div>
+        </div>
+        <span id="surplusTime" class="surplus-time">-00:00</span>
+    </div>
+    <!--操作按钮-->
+    <div class="operator">
+        <audio id="ad" src="" autoplay></audio>
+        <div class="btns">
+            <span>
+                <a href="" id="prev_href"><img src="../img/prev.png" alt="" id="prev"></a>
+            </span>
+            <span>
+                <img src="../img/play.png" alt="" id="play" title="播放" class="play hidden">
+                <img src="../img/pause.png" alt="" id="pause" title="暂停" class="pause">
+             </span>
+            <span>
+               <a href="" id="next_href"><img src="../img/next.png" alt="" id="next"></a>
+            </span>
+        </div>
+    </div>
+</div>
+<div id="footer">
+        <span class="home"><img  src="../img/home.png"></span>
+        <span class="location"><img src="../img/location.png"></span>
+        <span class="add"><img  src="../img/add.png"></span>
+        <span class="chat"><img src="../img/chat1.png"></span>
+        <span class="setting"><img src="../img/setting.png"></span>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        /*alert(document.body.clientWidth);*/
+        //获取屏幕宽度
+         $(".back").click(function () {
+        window.history.back(-1);
+    })
+     $(".home").click(function () {
+    	 location.href="index.html";
+    })
+
+      
+        var deviceWidth = document.body.clientWidth;
+        var processbarWidth = deviceWidth*0.72;
+        console.log(deviceWidth+"--"+processbarWidth)
+
+        //获取地址栏参数列表的listId值
+        var listid=GetQueryString("mid");
+       // alert(listid)
+        var timer;//调用加载时间更新表达式即更新函数
+        //歌曲当前播放时间，总时间
+        var lefttimeobj,righttimeobj,sumtime,currenttime;
+        var songprogresslength=0;//歌曲进度
+        var progressBg = document.getElementById("progressBg");
+        var progressColor = document.getElementById("progressColor");
+        //alert(listid)
+        var control=document.getElementById("control");
+        var music = document.getElementById("ad");
+         $.ajax({
+         type:"post",
+         url:"http://172.20.10.2:8080/SSM_homework/getMusic.action",
+         data:{"action":"getMusicById",
+        	 "mid":listid
+        	 },
+         dataType:"json",
+         beforeSend:function(){
+         //alert("正在请求服务器资源");
+         },
+         success:function(data){
+        	 
+        	/*  alert(1)
+        	 alert(data.mPic) */
+        	 $("#control").attr({"src":"../img/musicPhoto/"+data.mPic});
+        	 $(".songname").html(data.mName);
+             $(".singername").html(data.mSinger);
+             var  path="http://172.20.10.2:8080/SSM_homework/music/"+data.mPath;
+            
+            /* 手机端大部分不支持自动播放 */
+             $("#ad").attr({"src":path});
+            /*  $("audio").attr({"autoplay":"autoplay"}); */
+             
+             $("#ad").play(); 
+           /*  music.setAttribute('autoplay','autoplay'); */
+           var a =  $("#ad")[0];
+           a.play();
+          
+      
+
+             var prevObj,nextObj;
+
+            
+         },
+         error:function(){
+         alert("请求服务器资源失败！");
+         }
+        });
+
+        
+        
+        //alert(control);
+        var pauseobj = document.getElementById("pause");
+        var playobj = document.getElementById("play");
+
+
+
+        //当点击暂停键后，暂停键变成播放键，音乐停止播放，音乐光盘停止转动
+        pauseobj.onclick=function(){
+            pauseobj.style.display="none";
+            playobj.style.display="block";
+            music.pause();
+
+            control.style.animationPlayState="paused";
+        }
+        //当点击播放键后，播放键变成暂停键，音乐继续播放，音乐光盘开始转动
+        playobj.onclick=function(){
+            playobj.style.display="none";
+            pauseobj.style.display="block";
+            music.play();
+            control.style.animationPlayState="running";
+        }
+
+
+        //上一首
+        var prev = document.getElementById("prev");
+        prev.addEventListener("click",function(){
+            if(listid==1){
+
+            }else{
+                //上一首按钮的a标签地址
+                var prev_href= document.getElementById("prev_href");
+                var prev_num = parseInt(listid)-1;
+
+                prev_href.href="song.html?mid="+prev_num;
+
+            }
+        },false);
+
+        //下一首
+        var next = document.getElementById("next");
+        next.addEventListener("click",function(){
+            if(listid==3){
+
+            }else{
+                //上一首按钮的a标签地址
+                var next_href= document.getElementById("next_href");
+                var next_num = parseInt(listid)+1;
+
+                next_href.href="song.html?mid="+next_num;
+
+            }
+        },false);
+
+
+        //1瞄更新时间
+        timer = setInterval(function(){
+            lefttimeobj = document.getElementById("playTime");
+            righttimeobj = document.getElementById("surplusTime");
+            //duration 属性返回当前音频/视频的长度，以秒计。
+            // 如果未设置音频/视频，则返回 NaN
+            sumtime = music.duration;//歌曲总时间
+            currenttime  = music.currentTime;
+            // alert(currenttime)
+            songPlayTimes(sumtime,currenttime,lefttimeobj,righttimeobj);
+            //235进度条宽度
+            console.log(processbarWidth+".............")
+            songprogresslength = (currenttime/sumtime)*processbarWidth;
+
+            progressColor.style.width=songprogresslength+"px";
+            if(music.ended){
+                //消除定时器 进度条归零 播下一曲
+                clearInterval(timer);
+                progressColor.style.width=0;
+                next.click();
+            }
+        },1000);
+
+        //拖拽进度条  可以调节的
+        progressBg.onclick = function(event){
+            if(music.src!=""){
+                var time = getSongProgress(event);
+                // alert(time);
+                //chrome不支持设置时间  firefox支持
+                music.currentTime=time;
+            }else{
+                return false;
+            }
+        };
+        /*歌曲进度变化过程*/
+        function getSongProgress(event){
+            var progress;//宽度百分比
+            var songProgress;
+            /*先获取到点击的位置距离进度条最左边的长度*/
+            /*获得距离最左边的距离*/
+            var coord=coordinate(event);
+            var offsetCoord_X=coord.coord_X;
+            /*计算进度条的宽度*/
+            songScheduleChange(offsetCoord_X);
+            /*计算进度条的宽度百分比*/
+            console.log(processbarWidth+"1111")
+            progress=progressBarPercentage(processbarWidth,offsetCoord_X)/100;
+            //alert("progress&ndash;&gt;"+progress)
+            /*真实的歌曲进度数值*/
+            songProgress=progress*music.duration;
+            // alert("songProgress&ndash;&gt;"+songProgress);
+            return songProgress;
+        }
+    });
+
+    
+
+    //两边时间计算
+    function songPlayTimes(sumtime,currenttime,lefttimeobj,righttimeobj){
+        var leftTime,rightTime;
+        if(currenttime < sumtime){
+            leftTime = parseInt(currenttime);
+            // console.log(leftTime)
+            rightTime = parseInt(sumtime-currenttime);
+            //当前时间
+            lefttimeobj.innerHTML=conversionTime(leftTime);
+            //剩余时间
+            righttimeobj.innerHTML=conversionTime(rightTime);
+        }else{//歌曲播放完毕
+            lefttimeobj.innerHTML="00:00";
+            righttimeobj.innerHTML="-00:00";
+        }
+    }
+
+    
+    function conversionTime(time){
+        var minutes,second,cTime;
+        minutes = Math.floor((time/60)%60);
+        if(minutes<10){
+            minutes="0"+minutes;
+        }
+        //console.log(minutes)
+        second = Math.floor(time%60);
+        if(second<10){
+            second = "0"+second;
+        }
+        // console.log(second)
+        cTime = minutes+":"+second;
+        // console.log(cTime)
+        return cTime;
+    }
+
+    /*歌曲进度条变化*/
+    function songScheduleChange(size){
+        //alert("size"+size)
+        var progressColor=document.getElementById("progressColor");
+        progressColor.style.width=size+"px";
+    }
+    /*计算进度条的宽度百分比*/
+    function progressBarPercentage(totalLength,x){
+        //传入总长度totalLength和当前点击的x值
+        var result=(parseInt(x)/parseInt(totalLength))*100;
+
+        return Math.ceil(result);
+    }
+    
+    /*计算光标相对于第一个定位的父元素的坐标*/
+    function coordinate(e){
+        var o=window.event||e,
+            coord,coord_X,coord_Y;
+        coord_X=o.offsetX;
+        coord_Y=o.offsetY;
+        //alert(coord_X+","+coord_Y);
+        coord={"coord_X":coord_X,"coord_Y":coord_Y};
+        return coord;
+    }
+    
+    //获取对应参数得值,同时解决中文乱码
+    function GetQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        //
+        // if(r!=null)return  unescape(r[2]if(r!=null)return  unescape(r[2]);
+        // return null;
+        //解析中文乱码
+        return r?unescape(r[2]):null;
+    }
+    
+   
+
+
+</script>

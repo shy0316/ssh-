@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<!-- HandlerMapping 表示将请求的URL和Bean名字映射，如URL为 “上下文/hello”，则Spring配置文 件必须有一个名字为“/hello”的Bean，上下文默认忽略 -->
+	<!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"> 
+		</bean> -->
+	<!-- <bean name="/login.action" class="com.ssm.controller.TestController"> 
+		<property name="userService" ref="userService"></property> </bean> -->
+
+	<bean name="/getMusic.action" class="com.ssm.controller.MusicController"> 
+		<property name="musicService" ref="musicService"></property> 
+		<property name="methodNameResolver" ref="paramMethodResolver" />
+	</bean> 
+	<bean name="/getVideo.action" class="com.ssm.controller.VideoController">
+	    <property name="videoService" ref="videoService"></property>
+	    <property name="methodNameResolver" ref="paramMethodResolver" />
+	</bean>
+	
+	<!-- getMusic.action?action=ajaxDatas-->
+	<bean id="paramMethodResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="action"></property>
+		<property name="defaultMethodName" value="list" />
+	</bean>
+	
+	<bean name="/getRssNews.action" class="com.ssm.controller.ListRssNewsController" />
+	<bean name="/ListqqMusic.action" class="com.ssm.controller.ListQQMusicController" />
+	
+	<!-- HandlerAdapter 表示所有实现了org.springframework.web.servlet.mvc.Controller接口的Bean可 
+		以作为Spring Web MVC中的处理器。如果需要其他类型的处理器可以通过实现 HadlerAdapter来解决。 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+	<!-- ViewResolver InternalResourceViewResolver：用于支持Servlet、JSP视图解析； viewClass：JstlView表示JSP模板页面需要使用JSTL标签库，classpath中必须包含jstl的相关jar包； 
+		prefix和suffix：查找视图页面的前缀和后缀（前缀[逻辑视图名]后缀），比如传 进来的逻辑视图名为hello，则该该jsp视图页面应该存放在“WEBINF/jsp/hello.jsp” 
+		为了适应多视图的渲染 视图：*.jsp,*.html,*.xml,*.json -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 开启注解式处理器：开启支持 @controller 和@requestMapping 的注解 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
+
+	<!--注解类扫描路径 -->
+	<!-- <context:component-scan base-package="*" /> -->
+	<!--添加springmvc注解驱动 -->
+	<!-- <mvc:annotation-driven /> -->
+</beans>

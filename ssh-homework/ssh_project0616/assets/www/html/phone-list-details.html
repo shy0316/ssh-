@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+	<link href="../css/phone.css" type="text/css" rel="stylesheet">
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<title>通讯录</title>
+
+
+</head>
+<body>
+<div id="header" >
+	<span class="back"><a href="" ><img src="../img/back2.png"></a></span>
+
+</div>
+<div  id="content">
+	<img class="peopleimg" src="">
+
+	<div id="phonecontent">
+		<h3 class="name">sss</h3>
+		<div class="iconarea">
+			<span><i class="fa fa-home fa-2x"></i></span>
+			<span><i class="fa fa-heart fa-2x"></i></span>
+			<span><i class="fa fa-envelope fa-2x"></i></span>
+			<span><i class="fa fa-video-camera fa-2x"></i></span>
+		</div>
+		<div class="details">
+			<div class="phonenum">
+				<label>电话：</label>
+				<span class="num"></span>
+			</div>
+			<div class="beizhu">
+				<label>备注：</label>
+
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<div id="footer">
+	<span class="home"><img  src="../img/home.png"></span>
+	<span class="location"><img src="../img/location.png"></span>
+	<span class="add"><img  src="../img/add.png"></span>
+	<span class="chat"><img src="../img/chat1.png"></span>
+	<span class="setting"><img src="../img/setting.png"></span>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+<script>
+	function parseUrl() {
+		var url = location.href;
+		console.log(url);
+		var i = url.indexOf("?");
+		console.log(i);
+		if(i==-1)return;
+		var queryStr = url.substring(i+1);
+		console.log(queryStr);
+		var arr1 = queryStr.split("&");
+		var arr2 = new Object();
+		console.log(arr1);
+		var j;
+		for(j in arr1){
+		    var tmp = arr1[j].split("=");
+		    arr2[tmp[0]] = tmp[1];
+		}
+		return arr2;
+
+    }
+    $(function () {
+		var object = new Object();
+		object = parseUrl();
+		console.log(object['name']);
+		var imgpath = "../img/"+object['imgpath'];
+		var name= object['name'];
+		var num = object['phonenum'];
+		$(".peopleimg").attr("src",imgpath);
+		$(".name").html(name);
+		console.log(num)
+		$(".num").html(num);
+
+		$(".back").click(function () {
+			window.history.back(-1);
+        })
+		$(".home").click(function () {
+			window.location.href="index.html";
+        })
+    })
+</script>
+

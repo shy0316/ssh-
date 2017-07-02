@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 手动一个一个配置 别名-->
+		<typeAlias type="com.ssm.entity.User" alias="user"/>
+		<typeAlias type="com.ssm.entity.Music" alias="music" />
+		<typeAlias type="com.ssm.entity.Video" alias="video" />
+		<!-- 会自动将类名作为别名 -->
+		<!-- <package name="com.cpp.entity.User" /> -->
+	</typeAliases>
+
+	<mappers>
+		<!-- 一个一个手动配置 sql语句的映射文件-->
+		<mapper resource="com/ssm/dao/UserDao.xml"/>
+		<mapper resource="com/ssm/dao/MusicDao.xml" />
+		<mapper resource="com/ssm/dao/VideoDao.xml" />
+		<!-- 自动 扫描包内的接口与配置文件 -->
+		<!-- <package name="com.ssm.dao" /> -->
+	</mappers>
+</configuration>

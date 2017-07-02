@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+     <!-- 字符集 过滤器 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- 自定义get请求字符自过滤器  get方式 -->
+    <!-- <filter>
+        <filter-name>myCharacterEncodingFilter</filter-name>
+        <filter-class>filter.MyChanacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>myCharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> -->
+    
+    
+    
+    <servlet>
+        <servlet-name>spring-webmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+   		<!-- spring mvc 下配置文件的名称及路径  -->
+   		<init-param>
+   		    <param-name>contextConfigLocation</param-name>
+   		    <!-- 学习时spring容器 -->
+   		    <!-- <param-value>classpath:springmvc.xml</param-value> -->
+   		    <param-value>classpath:application_*.xml</param-value>
+   		</init-param>
+   		<!-- >=0时，表示在容器启动时就加载这个servlet，数字越大，级别越高 -->
+   		<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring-webmvc</servlet-name>
+        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
+</web-app>
+

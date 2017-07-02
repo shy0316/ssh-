@@ -1,0 +1,109 @@
+@charset "utf-8";
+@fontface {
+    font-family: chinese;
+    src: url("../fonts/%E6%98%86%E4%BB%91%E7%BB%86%E5%9C%86.ttf")
+}
+
+
+/* Layout
+----------------------------------------------------------------------------- */
+
+body {
+    padding-top: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 100%;
+}
+
+.body {
+    position: relative;
+    top: -110px;
+}
+
+
+/* Navigations
+----------------------------------------------------------------------------- */
+
+.navbar {
+    z-index: 100;
+}
+
+.navbar .container {
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar button>span {
+    color: white;
+}
+
+.navbar .navbar-brand img {
+    margin-top: 5px;
+    position: relative;
+    left: 100%;
+}
+
+.navbar ul {
+    margin: 20px 0px;
+    padding: 0px 0px;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar ul>li>a {
+    margin: auto 8px;
+    color: #fff;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+    color: #75b9eb;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar .navbar-right {
+    position: relative;
+    right: 10%;
+}
+
+
+/* main-page
+----------------------------------------------------------------------------- */
+
+.main-page {
+    width: 100%;
+    height: 100%;
+    max-height: 725px;
+}
+
+#carousel-generic {
+    height: 100%;
+    max-height: 725px;
+}
+
+.carousel-inner .item img {
+    width: 100%;
+    height: 100%;
+    max-height: 725px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-inner .item .carousel-caption {
+    width: 100%;
+    height: 750px;
+    max-height: 750px;
+    position: relative;
+    top: -750px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #eee;
+    font-size: 5em;
+}
+
+.carousel-control {
+    z-index: 10;
+}

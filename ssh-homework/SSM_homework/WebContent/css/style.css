@@ -1,0 +1,712 @@
+/*
+ *create by perany 
+ *彭杨丽 14卓工班 
+ *2017年6月20日
+ */
+
+@charset "utf-8";
+@fontface {
+    font-family: chinese;
+    src: url("../fonts/%E6%98%86%E4%BB%91%E7%BB%86%E5%9C%86.ttf")
+}
+
+
+/* Layout
+----------------------------------------------------------------------------- */
+
+body {
+    padding-top: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 100%;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.body {
+    overflow: auto;
+    position: relative;
+    top: -110px;
+}
+
+.page {
+    width: 95%;
+    margin: 300px auto;
+    padding: 2em 10em 5em 10em;
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 15px #666;
+    position: relative;
+    top: 0px;
+}
+
+.page-title {
+    width: 100%;
+    margin: 20px 0px;
+    border-bottom: 1px solid #666;
+    line-height: 250%;
+    letter-spacing: 0.1em;
+    color: #aaa;
+    font-size: 3em;
+}
+
+
+/* Navigations
+----------------------------------------------------------------------------- */
+
+.navbar {
+    width: 100%;
+    z-index: 100;
+    font-size: 1.5em;
+    position: fixed;
+    top: 0px;
+}
+
+.navbar .container {
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar button>span {
+    color: white;
+}
+
+.navbar .navbar-brand img {
+    margin-top: 5px;
+    position: relative;
+    left: 100%;
+}
+
+.navbar ul {
+    margin: 20px 0px;
+    padding: 0px 0px;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar ul>li>a {
+    margin: auto 8px;
+    color: #fff;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+    color: #75b9eb;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar .navbar-right {
+    position: relative;
+    right: 10%;
+}
+
+
+/* 模态框
+----------------------------------------------------------------------------- */
+
+#myModal {}
+
+#myModal .modal-dialog {
+    position: relative;
+    top: 35%;
+    left: 0;
+    margin: 0px auto;
+}
+
+.modal-body p {
+    font-size: 1.4em;
+}
+
+.modal-header {
+    letter-spacing: 1px;
+    min-height: 16.428571429px;
+    padding: 8px 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-body {
+    position: relative;
+    padding: 30px;
+    color: #666;
+}
+
+.modal-footer {
+    padding: 5px 20px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+.btn {
+    line-height: 1.0;
+}
+
+.btn-default {
+    color: #666;
+    background-color: #eee;
+}
+
+
+/* 分页
+----------------------------------------------------------------------------- */
+
+.perpage {
+    list-style: none;
+    list-style: none;
+    text-align: center;
+    line-height: 150%;
+    color: #999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+.perpage>li {
+    float: left;
+    padding: 5px 3px;
+    cursor: pointer;
+}
+
+.perpage .perpageItem,
+.perpage a {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.perpage .perpageItemActive {
+    margin: 5px;
+    color: white;
+}
+
+.perpage .perpageItem:hover,
+.perpage a:hover {
+    color: white;
+}
+
+.perpage .perpageItemDisable {
+    margin: 5px;
+    color: #666;
+}
+
+.perpage #frontPage {
+    margin-right: 100px;
+}
+
+.perpage #nextPage {
+    position: relative;
+    right: -30px;
+}
+
+
+/* bd-page
+----------------------------------------------------------------------------- */
+
+.bd-page {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+    top: 0px;
+}
+
+.bd-page img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+
+/* main-page
+----------------------------------------------------------------------------- */
+
+.main-bg {
+    width: 100%;
+    height: 300px;
+    margin: 0px auto;
+    margin-top: 400px;
+    margin-bottom: 250px;
+    padding-top: 70px;
+    position: relative;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.main-page .title {
+    width: 100%;
+    letter-spacing: 2px;
+}
+
+.main-page .title small {
+    margin: 20px auto;
+    color: rgba(117, 185, 235, 0.54);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1.6em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.main-page .title>span {
+    width: 100%;
+    display: block;
+    margin: auto;
+    color: #ababab;
+    font-size: 5em;
+    text-align: center;
+}
+
+
+/* news-page
+----------------------------------------------------------------------------- */
+
+.news-page .content {
+    padding: 0px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.news-page .content .left,
+.news-page .content .right {
+    width: 50%;
+}
+
+.news-page .content .left ul,
+.news-page .content .right ul {
+    margin: 10px 0px;
+    list-style: square;
+    font-size: 1.4em;
+    line-height: 200%;
+    color: #aaa;
+}
+
+.news-page .content .left ul li a,
+.news-page .content .right ul li a {
+    color: #aaa;
+}
+
+.news-page .content .left ul li a:hover,
+.news-page .content .right ul li a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: #ddd;
+}
+
+
+/* tuling-page
+----------------------------------------------------------------------------- */
+
+.tuling-page .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.tuling-page .content .talk {
+    width: 70%;
+    border: none;
+}
+
+.tuling-page .content .choose {
+    width: 25%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    border: 0px solid white;
+}
+
+.tuling-page .content .choose [class|=fun] {
+    width: 40%;
+    height: 50px;
+    margin: 8px 15px;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #aaa;
+    background-color: rgba(111, 111, 111, 0.8);
+    color: #000;
+    text-shadow: 1px 0px 2px #aaa;
+    font-size: 2.0em;
+    text-align: center;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+}
+
+.tuling-page .content .choose [class|=fun]:hover {
+    background-color: rgba(111, 111, 111, 0.3);
+    color: #aaa;
+    text-shadow: 1px 0px 2px #000;
+}
+
+
+/* yiyuan-page
+----------------------------------------------------------------------------- */
+
+.yiyuan-page .content {
+    font-size: 1.4em;
+    color: #aaa;
+}
+
+.yiyuan-page .content .audio {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.yiyuan-page .content .audio .list {
+    width: 30%;
+    margin: 0px 30px 0px 30px;
+    padding-right: 40px;
+    border-right: 1px solid #333;
+}
+
+.yiyuan-page .content .audio .list #demoContent {
+    height: 225px;
+    list-style: none;
+    text-align: right;
+    font-size: 1.2em;
+    line-height: 150%;
+    color: #999;
+}
+
+.yiyuan-page .content .audio .list #demoContent li a span,
+.yiyuan-page .content .audio .list #demoContent li a,
+.yiyuan-page .content .audio .list #demoContent li {
+    color: #999;
+    cursor: pointer;
+}
+
+.yiyuan-page .content .audio .list #demoContent li a span:hover,
+.yiyuan-page .content .audio .list #demoContent li a:hover,
+.yiyuan-page .content .audio .list #demoContent li:hover {
+    text-decoration: none;
+    color: #eee;
+}
+
+.yiyuan-page .content .audio .list #perpage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+.yiyuan-page .content .audio .play {
+    width: 40%;
+    margin: 0px;
+}
+
+.yiyuan-page .play .song-info {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.yiyuan-page .play .song-info span {
+    margin: 2px 5px;
+}
+
+.yiyuan-page .content .audio .play .img {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.yiyuan-page .content .audio .play .img img {
+    width: 150px;
+    height: 150px;
+    box-shadow: 1px 1px 6px #666;
+    border-radius: 50%;
+}
+
+.yiyuan-page .content .audio .play .control {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.yiyuan-page .content .audio .play .control span {
+    margin: 0px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.yiyuan-page .content .audio .play .control span:hover {
+    font-weight: bolder;
+    color: white;
+}
+
+.yiyuan-page .content .audio .play .control .playsong {
+    width: 2.0em;
+    height: 2.0em;
+    line-height: 1.9em;
+    text-indent: 0.5em;
+    display: inline-block;
+    font-size: 2em;
+    border: 3px solid #aaa;
+    border-radius: 50%;
+}
+
+
+/* bendi-page
+----------------------------------------------------------------------------- */
+
+.bendi-page .content #tabs {
+    overflow: auto;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bendi-page .content #tabs li {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.bendi-page .content #tabs a {
+    box-shadow: -4px 0 0 rgba(0, 0, 0, 0.2);
+    background: #222;
+    background: -webkit-linear-gradient(230deg, transparent 10px, #222 10px);
+    background: -webkit-linear-gradient(230deg, transparent 10px, #222 10px);
+    background: linear-gradient(220deg, transparent 10px, #222 10px);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    color: #666;
+    float: left;
+    font-size: 1.4em;
+    height: 35px;
+    line-height: 250%;
+    padding: 0 30px;
+    text-decoration: none;
+}
+
+.bendi-page .content #tabs a:hover {
+    background: #333;
+    background: -webkit-linear-gradient(230deg, transparent 10px, #333 10px);
+    background: linear-gradient(220deg, transparent 10px, #333 10px);
+}
+
+.bendi-page .content #tabs a:focus {
+    outline: 0;
+}
+
+.bendi-page .content #tabs #current a {
+    background: #646464;
+    background: -webkit-linear-gradient(230deg, transparent 10px, #646464 10px);
+    background: linear-gradient(220deg, transparent 10px, #646464 10px);
+    text-shadow: none;
+    color: #aaa;
+}
+
+.bendi-page .content #content {
+    width: 100%;
+    background: rgba(16, 16, 16, 0.7);
+    border-radius: 0 2px 2px 2px;
+    padding: 30px;
+    color: #999;
+    font-size: 1.4em;
+}
+
+
+/* Remove the rule below if you want the content to be "organic" */
+
+.bendi-page .content #content>div {
+    height: 220px;
+}
+
+.bendi-page .content #content #audio,
+.bendi-page .content #content #video {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.bendi-page .content #content #audio .list,
+.bendi-page .content #content #video .list {
+    width: 450px;
+    height: 250px;
+    margin: 0px 30px 0px 30px;
+    padding-right: 40px;
+    text-align: right;
+    border-right: 1px solid #333;
+}
+
+.bendi-page .content #content #video .list .perpage #frontPage {
+    margin-right: 300px;
+}
+
+.bendi-page .content #content #audio #demoContent,
+.bendi-page .content #content #video #demoContent {
+    height: 215px;
+    text-align: right;
+    font-size: 1.2em;
+    list-style: none;
+}
+
+.bendi-page .content #content #audio #demoContent li,
+.bendi-page .content #content #video #demoContent li {
+    cursor: pointer;
+}
+
+.bendi-page .content #content #audio #demoContent li:hover,
+.bendi-page .content #content #video #demoContent li:hover {
+    color: #eee;
+}
+
+.bendi-page .content #content #audio .list #perpage,
+.bendi-page .content #content #video .list #perpage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+.bendi-page .content #content #audio .play,
+.bendi-page .content #content #video .play {
+    width: 40%;
+    margin: 0px;
+}
+
+.bendi-page .content #content #audio .play .song-info {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.bendi-page .content #content #audio .play .song-info span {
+    margin: 2px 5px;
+}
+
+.bendi-page .content #content #audio .play .img {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.bendi-page .content #content #audio .play .img img {
+    width: 150px;
+    height: 150px;
+    box-shadow: 1px 1px 6px #666;
+    border-radius: 50%;
+}
+
+.bendi-page .content #content #audio .play .control {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.bendi-page .content #content #audio .play .control span {
+    margin: 0px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.bendi-page .content #content #audio .play .control span:hover {
+    font-weight: bolder;
+    color: white;
+}
+
+.bendi-page .content #content #audio .play .control .playsong {
+    width: 2.0em;
+    height: 2.0em;
+    line-height: 1.9em;
+    text-indent: 0.5em;
+    display: inline-block;
+    font-size: 2em;
+    border: 3px solid #aaa;
+    border-radius: 50%;
+}
+
+.bendi-page .content #content #video video {
+    width: 400px;
+    height: 96%;
+}
